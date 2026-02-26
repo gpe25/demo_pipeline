@@ -10,8 +10,16 @@ from src.config.config_param import CSV_EXPORT
 def run():
     try:
         df = pd.read_csv(STOCK_RAW)
+
+        # Arrondi à 2 chiffres pour quantite
+        df['quantite'] = df['quantite'].round(2)
+
+        # Renommage quantite en stock
+        df = df.rename({'quantite': 'stock'})
+
         # Sauvegarde du fichier transformé
         df.to_csv(STOCK_TRF, **CSV_EXPORT)
+
         return (True, df)
     except Exception as e:
         return (False, e)

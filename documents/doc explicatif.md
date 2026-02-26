@@ -45,7 +45,7 @@ Aucune donnée manquante & aucune ligne dupliquée dans le fichier
 - Conservation de l'ensemble des données (postulat : pas de données abérrantes)
 
 **🟠 Choix techniques pour démo :**
-- Conservation du format float pour quantité stocks
+- Conservation du format float pour quantité stocks (*avec arrondi à 2 chiffres après la virgule*)
 - Renommer champs quantite en stock
 
 
@@ -95,7 +95,7 @@ Aucune donnée manquante & aucune ligne dupliquée dans le fichier
 
 **🟠 Choix techniques pour démo :**
 - Modification format pour champs [date] (str -> datetime)
-- Conservation du format float pour quantité ventes
+- Conservation du format float pour quantité ventes (*avec arrondi à 2 chiffres après la virgule*)
 - Renommer champs quantite en ventes
 
 
