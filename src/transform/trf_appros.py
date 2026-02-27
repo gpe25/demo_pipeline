@@ -23,18 +23,8 @@ def run():
         cle = ['date', 'code_article', 'code_site']
         df_agg = df.groupby(cle)['quantite'].sum().reset_index()
 
-        # Ajout année & semaine (norme ISO)
-        df_agg['annee_iso'] = df_agg['date'].dt.isocalendar().year
-        df_agg['semaine_iso'] = df_agg['date'].dt.isocalendar().week
-
-        # Concaténation année + semaine
-        df_agg['annee_semaine'] = (df_agg['annee_iso'].astype(str)
-                                   + '-'
-                                   + df_agg['semaine_iso'].astype(str)
-                                   .str.zfill(2))
-
         # Renommage quantite en appros
-        df_agg = df_agg.rename({'quantite': 'appros'})
+        df_agg = df_agg.rename({'quantite': 'appros'}, axis=1)
 
         # Sauvegarde du fichier transformé
         df_agg.to_csv(APPROS_TRF, **CSV_EXPORT)

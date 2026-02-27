@@ -19,3 +19,6 @@ VENTES_RAW = DATA_RAW / "ventes.csv"
 APPROS_TRF = DATA_TRF / "appros.csv"
 STOCK_TRF = DATA_TRF / "stock.csv"
 VENTES_TRF = DATA_TRF / "ventes.csv"
+
+# Fichier de sortie :
+EXP_OUTPUT = DATA_OUT / "output.csv"

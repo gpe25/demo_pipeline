@@ -15,7 +15,7 @@ def run():
         df['quantite'] = df['quantite'].round(2)
 
         # Renommage quantite en stock
-        df = df.rename({'quantite': 'stock'})
+        df = df.rename({'quantite': 'stock_init'}, axis=1)
 
         # Sauvegarde du fichier transformé
         df.to_csv(STOCK_TRF, **CSV_EXPORT)

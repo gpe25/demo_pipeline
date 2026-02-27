@@ -36,17 +36,17 @@ Aucune donnée manquante & aucune ligne dupliquée dans le fichier
 <span style="color:#4F81BD; font-weight:bold">🔵 Valeurs extrèmes à valider avec le client (plausibles ou erreurs ?)**</span>
 
 **Sites :**
-- 5 sites dont 3 avec peu de données et de stocks (encore actifs?)  
+- 5 sites dont 3 avec peu de données et de stocks (*encore actifs ?*)  
 <span style="color:#4F81BD; font-weight:bold">🔵 Choix à valider avec le client (*cf.I.4. champs communs*)</span>
     
 **🟢 Choix fonctionnels pour démo :**
 - Fichier propre, pas d'actions particulières à effectuer
 - Conservation fonctionnement code article + code site
-- Conservation de l'ensemble des données (postulat : pas de données abérrantes)
+- Conservation de l'ensemble des données (*postulat : pas de données abérrantes*)
 
 **🟠 Choix techniques pour démo :**
 - Conservation du format float pour quantité stocks (*avec arrondi à 2 chiffres après la virgule*)
-- Renommer champs quantite en stock
+- Renommer champs quantite en stock_init
 
 
 ## 2. Appros
@@ -71,7 +71,7 @@ Aucune donnée manquante mais **des lignes dupliquées**
 <span style="color:#4F81BD; font-weight:bold">🔵 contrôle à effectuer avec le client / dépendant du choix sur les données dupliquées</span>
 
 **🟢 Choix fonctionnels pour démo :**
-- Conservation des doublons (même commande passée à plusieurs fournisseurs ?)
+- Conservation des doublons (*même commande passée à plusieurs fournisseurs ?*)
 - Agrégation des approvisionnements par jour et par clé article / site 
 
 **🟠 Choix techniques pour démo :**  
@@ -106,7 +106,7 @@ Aucune donnée manquante & aucune ligne dupliquée dans le fichier
 ![Concordance site](./concordance_sites.JPG "Concordance sites")
 
 Seuls 2 sites sont communs aux stocks / achats / ventes
-<span style="color:#4F81BD; font-weight:bold">🔵 Choix à valider avec le client (sites inactifs? erreur extraction?)</span>
+<span style="color:#4F81BD; font-weight:bold">🔵 Choix à valider avec le client (sites inactifs ? erreur extraction ?)</span>
 
 **Articles :** pour les sites communs aux stocks / achats / ventes
 - Seul 38% des articles sur le site 1 sont présents dans les 3 sources
@@ -139,17 +139,16 @@ II. Transformation des fichiers sources
 ------------
 
 **🟢 Choix fonctionnels pour démo :**
-- Ensemble des choix listés lors de la phase exploratoire
+- Ensemble des choix listés lors de la phase exploratoire I.1, I.2 et I.3
 
 **🟠 Choix techniques pour démo :**
-- Ensemble des choix listés lors de la phase exploratoire
+- Ensemble des choix listés lors de la phase exploratoire I.1, I.2 et I.3
 - Utilisation de pathlib et d'un fichier de config pour la gestion des chemins
 - Utilisation d'un fichier de paramètrage
 - Utilisation de pandas pour la manipulation des données
 - Organisation du projet en dossiers / sous dossiers
 - Sauvegarde des données transformées avant fichier de sortie
 - 1 fichier .py par traitement (appros / stocks / ventes)
-- Ajout de la notion semaine et année pour appros et stocks
 
 **Pour aller + loin :**
 - Contrôle(s) automatique(s) à mettre en place ? <span style="color:#4F81BD; font-weight:bold">🔵 à définir avec le client</span>
@@ -161,11 +160,17 @@ III. Fichier de sortie
 ------------
 
 **🟢 Choix fonctionnels pour démo :**
-- Ensemble des choix listés lors de la phase exploratoire
+- Ensemble des choix listés lors de la phase exploratoire I.4
+- Aggrégation des données par semaine (*en réponse à la demande*)
+- Calcul du stock à fin de semaine selon le stock initial - ventes cumulées + appros cumulées
+- Quand aucune vente n'a été réalisée, l'indicateur de couverture est mis par défaut à NULL  
+<span style="color:#4F81BD; font-weight:bold">🔵 à valider avec le client</span>
+- Aucun blocage sur les stocks négatifs  
+<span style="color:#4F81BD; font-weight:bold">🔵 à échanger avec le client</span>
 
 **🟠 Choix techniques pour démo :**
-- Ensemble des choix listés lors de la phase exploratoire
-- Création d'une table 'calendrier' pour être sûr d'avoir l'ensemble des semaines (même celles sans ventes et appros)
+- Ensemble des choix listés lors de la phase exploratoire I.4
+- Création d'une table 'calendrier' afin de s'assurer d'avoir l'ensemble des semaines (même celles sans ventes et appros). Cette table sera basée sur les périodes communes
 
 **Focus Indicateur de couverture :**  
 Métode de calcul :  
@@ -175,6 +180,11 @@ Mise en place d'un système très simple et rapidement implémentable pour déma
 **Mais** un modèle de machine learning de type série temporelle ou régression (*voir classification si l'objectif est un scoring de type risque de rupture à x semaines*) serait beaucoup + pertinent  
 <span style="color:#4F81BD; font-weight:bold">🔵 à cadrer avec le client</span>
 
+**Fichier de sortie :**
+
+![Fchier sortie](./Fichier_sortie.JPG "Fichier sortie")
+
+
 **Pour aller + loin :**
 - Contrôle(s) automatique(s) à mettre en place ? <span style="color:#4F81BD; font-weight:bold">🔵 à définir avec le client</span>
 - Gestion des erreurs
@@ -183,3 +193,13 @@ Mise en place d'un système très simple et rapidement implémentable pour déma
 
 IV. Schéma BDD
 ------------
+
+Dans une optique d’exploitation en business intelligence et dans l'idée de faciliter la création du tableau illustré par l’image ci dessous :
+
+![tableau](./tableau.png "Illustration tableau")
+
+Proposition d'un schéma en étoile avec :
+- une table de fait (*mvts_articles_hebdo*)
+- au minima 3 tables de dimension (*articles, calendrier et sites*)
+
+![Schéma_BDD](./schéma_bdd_deci.JPG "Schéma BDD Décisionnelle")
