@@ -189,6 +189,7 @@ Mise en place d'un système très simple et rapidement implémentable pour déma
 - Contrôle(s) automatique(s) à mettre en place ? <span style="color:#4F81BD; font-weight:bold">🔵 à définir avec le client</span>
 - Gestion des erreurs
 - logs et infos traitements
+- Conteneurisation du projet (Docker) pour faciliter le déploiement et l’exécution dans des environnements hétérogènes
 
 
 IV. Schéma BDD
