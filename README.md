@@ -9,7 +9,7 @@ Depuis le terminal :
 **1. Cloner le repo**  
 git clone https://github.com/gpe25/demo_pipeline.git
 
-**2. Se positionner dans le dossier 'demo_pipeline**
+**2. Se positionner dans le dossier 'demo_pipeline**  
 cd demo_pipeline  
 
 **3. Créer et activer l'environnement virtuel .venv**  
