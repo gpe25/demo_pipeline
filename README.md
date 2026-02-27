@@ -13,8 +13,8 @@ git clone https://github.com/gpe25/demo_pipeline.git
 cd demo_pipeline  
 
 **3. Créer et activer l'environnement virtuel .venv**  
-python -m venv .venv --without-pip
-.venv\Scripts\activate
+python -m venv .venv --without-pip  
+.venv\Scripts\activate  
 python -m ensurepip --upgrade
 
 **4. Installer les dépendances**  
