@@ -28,4 +28,4 @@ Document explicatif
 ------------
 
 Le document explicatif contenant les choix techniques, les hypothèses métier et les différentes méthodes retenues se trouve dans :  
-- /documents/doc explicatif/md
+- /documents/doc explicatif.md
